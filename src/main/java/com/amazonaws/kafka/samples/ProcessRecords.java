@@ -85,7 +85,7 @@ class ProcessRecords {
             if (!csr) {
                 //clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
                 logger.error("=====> AQUI ENTRA" + v.getTopic() + " " + v.getValue());
-                event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v.getValue()));
             }
 
             //if (clickEvent != null)
