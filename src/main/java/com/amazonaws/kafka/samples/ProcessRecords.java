@@ -65,8 +65,8 @@ class ProcessRecords {
     private void deserializeAddToFirehoseBatch(Deserializer deserializer, KafkaEvent kafkaEvent, String requestId, SendKinesisDataFirehose sendKinesisDataFirehose) {
         kafkaEvent.getRecords().forEach((key, value) -> value.forEach(v -> {
 
-            //ClickEvent clickEvent = null;
-            Event event = null;
+            ClickEvent clickEvent = null;
+            //Event event = null;
             boolean csr = false;
 
             if (System.getenv("CSR") != null) {
@@ -74,8 +74,8 @@ class ProcessRecords {
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                        //clickEvent = (ClickEvent) SpecificData.get().deepCopy(ClickEvent.SCHEMA$, rec);
-                        event = (Event) SpecificData.get().deepCopy(Event.SCHEMA$, rec);
+                        clickEvent = (ClickEvent) SpecificData.get().deepCopy(ClickEvent.SCHEMA$, rec);
+                        //event = (Event) SpecificData.get().deepCopy(Event.SCHEMA$, rec);
                     } catch (Exception e) {
                         logger.error(Util.stackTrace(e));
                     }
@@ -83,15 +83,15 @@ class ProcessRecords {
             }
 
             if (!csr) {
-                //clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                logger.error("=====> AQUI ENTRA" + v.getTopic() + " " + v.getValue());
-                event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v.getValue()));
+                clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                logger.info("=====> AQUI ENTRA" + v.getTopic() + " " + v.getValue());
+                //event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v));
             }
 
-            //if (clickEvent != null)
-                //sendKinesisDataFirehose.addFirehoseRecordToBatch(clickEvent.toString(), requestId);
-            if (event != null)
-                sendKinesisDataFirehose.addFirehoseRecordToBatch(event.toString(), requestId);
+            if (clickEvent != null)
+                sendKinesisDataFirehose.addFirehoseRecordToBatch(clickEvent.toString(), requestId);
+            //if (event != null)
+                //sendKinesisDataFirehose.addFirehoseRecordToBatch(event.toString(), requestId);
         }));
     }
 
