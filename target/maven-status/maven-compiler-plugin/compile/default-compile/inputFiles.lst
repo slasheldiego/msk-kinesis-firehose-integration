@@ -1,0 +1,7 @@
+/Users/diegobenavides/Library/Mobile Documents/com~apple~CloudDocs/workspace/java/msk-kinesis-firehose-integration/src/main/java/samples/clickstream/avro/ClickEvent.java
+/Users/diegobenavides/Library/Mobile Documents/com~apple~CloudDocs/workspace/java/msk-kinesis-firehose-integration/src/main/java/com/amazonaws/kafka/samples/Util.java
+/Users/diegobenavides/Library/Mobile Documents/com~apple~CloudDocs/workspace/java/msk-kinesis-firehose-integration/src/main/java/com/amazonaws/kafka/samples/SendKinesisDataFirehose.java
+/Users/diegobenavides/Library/Mobile Documents/com~apple~CloudDocs/workspace/java/msk-kinesis-firehose-integration/src/main/java/samples/clickstream/avro/Event.java
+/Users/diegobenavides/Library/Mobile Documents/com~apple~CloudDocs/workspace/java/msk-kinesis-firehose-integration/src/main/java/com/amazonaws/kafka/samples/SendFirehoseAsyncHandler.java
+/Users/diegobenavides/Library/Mobile Documents/com~apple~CloudDocs/workspace/java/msk-kinesis-firehose-integration/src/main/java/com/amazonaws/kafka/samples/HandlerMSK.java
+/Users/diegobenavides/Library/Mobile Documents/com~apple~CloudDocs/workspace/java/msk-kinesis-firehose-integration/src/main/java/com/amazonaws/kafka/samples/ProcessRecords.java
