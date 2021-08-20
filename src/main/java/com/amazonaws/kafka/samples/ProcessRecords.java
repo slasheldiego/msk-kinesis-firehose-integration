@@ -119,7 +119,7 @@ class ProcessRecords {
                 deserializer = new KafkaAvroDeserializer(schemaRegistryClient);
             }
         }
-        if (deserializer == null) {
+        if (deserializer == null || System.getenv("CSR").equals("false")) {
             deserializer = new AWSKafkaAvroDeserializer(getGSRConfigs());
         }
 
