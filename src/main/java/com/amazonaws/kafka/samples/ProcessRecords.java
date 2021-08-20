@@ -72,8 +72,8 @@ class ProcessRecords {
             logger.error("=====> AQUI ENTRA 1 " + v.getTopic() + " " + v.getValue());
 
             if (System.getenv("CSR") != null) {
+                logger.error("=====> AQUI ENTRA 2" + v.getTopic() + " " + v.getValue());
                 if (Boolean.parseBoolean(System.getenv("CSR"))) {
-                    logger.error("=====> AQUI ENTRA 2" + v.getTopic() + " " + v.getValue());
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
