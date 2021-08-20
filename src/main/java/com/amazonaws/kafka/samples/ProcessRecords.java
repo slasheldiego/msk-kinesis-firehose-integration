@@ -92,8 +92,12 @@ class ProcessRecords {
 
             logger.error("=====> AQUI ENTRA 5 " + System.getenv("CSR"));
             if (!csr) {
-                clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                logger.error("=====> AQUI ENTRA" + v.getTopic() + " " + v.getValue());
+                try{
+                    logger.error("=====> AQUI ENTRA 6 " + v.getTopic() + " " + v.getValue());
+                    clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                } catch (Exception e) {
+                    logger.error("=====> ERROR " + e);
+                }
                 //event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v));
             }
 
