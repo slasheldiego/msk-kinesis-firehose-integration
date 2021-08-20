@@ -74,7 +74,7 @@ class ProcessRecords {
 
             if (System.getenv("CSR") != null) {
                 logger.error("=====> AQUI ENTRA 2 " + System.getenv("CSR"));
-
+                logger.error("=====> AQUI ENTRA" + System.getenv("CSR"));
                 if(System.getenv("CSR").equals("false")){
                     csr = true; 
                 }
