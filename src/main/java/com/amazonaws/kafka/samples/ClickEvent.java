@@ -1,4 +1,4 @@
-package samples.clickstream.avro;
+package com.amazonaws.kafka.samples;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
