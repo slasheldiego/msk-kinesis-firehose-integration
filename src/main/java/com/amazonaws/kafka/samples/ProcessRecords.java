@@ -84,7 +84,7 @@ class ProcessRecords {
 
             if (!csr) {
                 clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                logger.info("=====> AQUI ENTRA" + v.getTopic() + " " + v.getValue());
+                logger.error("=====> AQUI ENTRA" + v.getTopic() + " " + v.getValue());
                 //event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v));
             }
 
@@ -93,6 +93,7 @@ class ProcessRecords {
             //if (event != null)
                 //sendKinesisDataFirehose.addFirehoseRecordToBatch(event.toString(), requestId);
         }));
+        logger.error("=====> AQUI SALE" + kafkaEvent.getRecords());
     }
 
     void processRecords(KafkaEvent kafkaEvent, String requestId) {
