@@ -75,7 +75,6 @@ class ProcessRecords {
             if (System.getenv("CSR") != null) {
                 logger.error("=====> AQUI ENTRA 2 " + System.getenv("CSR"));
                 if (Boolean.parseBoolean(System.getenv("CSR"))) {
-                    logger.error("=====> AQUI ENTRA 3 " + System.getenv("CSR"));
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
@@ -87,6 +86,7 @@ class ProcessRecords {
                 }
             }
 
+            logger.error("=====> AQUI ENTRA 3 " + System.getenv("CSR"));
             if (!csr) {
                 clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
                 logger.error("=====> AQUI ENTRA" + v.getTopic() + " " + v.getValue());
