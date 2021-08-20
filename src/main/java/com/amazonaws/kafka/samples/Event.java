@@ -7,7 +7,7 @@ package com.amazonaws.kafka.samples;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Event extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Event\",\"namespace\":\"samples.clickstream.avro\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"date\",\"type\":\"string\"},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"unitPrice\",\"type\":\"double\"},{\"name\":\"customerId\",\"type\":\"long\"},{\"name\":\"country\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Event\",\"namespace\":\"com.amazonaws.kafka.samples\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"date\",\"type\":\"string\"},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"unitPrice\",\"type\":\"double\"},{\"name\":\"customerId\",\"type\":\"long\"},{\"name\":\"country\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public long id;
   @Deprecated public java.lang.CharSequence date;
@@ -172,18 +172,18 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   /** Creates a new Event RecordBuilder */
-  public static samples.clickstream.avro.Event.Builder newBuilder() {
-    return new samples.clickstream.avro.Event.Builder();
+  public static com.amazonaws.kafka.samples.Event.Builder newBuilder() {
+    return new com.amazonaws.kafka.samples.Event.Builder();
   }
   
   /** Creates a new Event RecordBuilder by copying an existing Builder */
-  public static samples.clickstream.avro.Event.Builder newBuilder(samples.clickstream.avro.Event.Builder other) {
-    return new samples.clickstream.avro.Event.Builder(other);
+  public static com.amazonaws.kafka.samples.Event.Builder newBuilder(com.amazonaws.kafka.samples.Event.Builder other) {
+    return new com.amazonaws.kafka.samples.Event.Builder(other);
   }
   
   /** Creates a new Event RecordBuilder by copying an existing Event instance */
-  public static samples.clickstream.avro.Event.Builder newBuilder(samples.clickstream.avro.Event other) {
-    return new samples.clickstream.avro.Event.Builder(other);
+  public static com.amazonaws.kafka.samples.Event.Builder newBuilder(com.amazonaws.kafka.samples.Event other) {
+    return new com.amazonaws.kafka.samples.Event.Builder(other);
   }
   
   /**
@@ -202,11 +202,11 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
 
     /** Creates a new Builder */
     private Builder() {
-      super(samples.clickstream.avro.Event.SCHEMA$);
+      super(com.amazonaws.kafka.samples.Event.SCHEMA$);
     }
     
     /** Creates a Builder by copying an existing Builder */
-    private Builder(samples.clickstream.avro.Event.Builder other) {
+    private Builder(com.amazonaws.kafka.samples.Event.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -239,8 +239,8 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Creates a Builder by copying an existing Event instance */
-    private Builder(samples.clickstream.avro.Event other) {
-            super(samples.clickstream.avro.Event.SCHEMA$);
+    private Builder(com.amazonaws.kafka.samples.Event other) {
+            super(com.amazonaws.kafka.samples.Event.SCHEMA$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = true;
@@ -277,7 +277,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Sets the value of the 'id' field */
-    public samples.clickstream.avro.Event.Builder setId(long value) {
+    public com.amazonaws.kafka.samples.Event.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -290,7 +290,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Clears the value of the 'id' field */
-    public samples.clickstream.avro.Event.Builder clearId() {
+    public com.amazonaws.kafka.samples.Event.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -301,7 +301,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Sets the value of the 'date' field */
-    public samples.clickstream.avro.Event.Builder setDate(java.lang.CharSequence value) {
+    public com.amazonaws.kafka.samples.Event.Builder setDate(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.date = value;
       fieldSetFlags()[1] = true;
@@ -314,7 +314,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Clears the value of the 'date' field */
-    public samples.clickstream.avro.Event.Builder clearDate() {
+    public com.amazonaws.kafka.samples.Event.Builder clearDate() {
       date = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -326,7 +326,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Sets the value of the 'quantity' field */
-    public samples.clickstream.avro.Event.Builder setQuantity(int value) {
+    public com.amazonaws.kafka.samples.Event.Builder setQuantity(int value) {
       validate(fields()[2], value);
       this.quantity = value;
       fieldSetFlags()[2] = true;
@@ -339,7 +339,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Clears the value of the 'quantity' field */
-    public samples.clickstream.avro.Event.Builder clearQuantity() {
+    public com.amazonaws.kafka.samples.Event.Builder clearQuantity() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -350,7 +350,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Sets the value of the 'unitPrice' field */
-    public samples.clickstream.avro.Event.Builder setUnitPrice(double value) {
+    public com.amazonaws.kafka.samples.Event.Builder setUnitPrice(double value) {
       validate(fields()[3], value);
       this.unitPrice = value;
       fieldSetFlags()[3] = true;
@@ -363,7 +363,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Clears the value of the 'unitPrice' field */
-    public samples.clickstream.avro.Event.Builder clearUnitPrice() {
+    public com.amazonaws.kafka.samples.Event.Builder clearUnitPrice() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -374,7 +374,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Sets the value of the 'customerId' field */
-    public samples.clickstream.avro.Event.Builder setCustomerId(long value) {
+    public com.amazonaws.kafka.samples.Event.Builder setCustomerId(long value) {
       validate(fields()[4], value);
       this.customerId = value;
       fieldSetFlags()[4] = true;
@@ -387,7 +387,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Clears the value of the 'customerId' field */
-    public samples.clickstream.avro.Event.Builder clearCustomerId() {
+    public com.amazonaws.kafka.samples.Event.Builder clearCustomerId() {
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -398,7 +398,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Sets the value of the 'country' field */
-    public samples.clickstream.avro.Event.Builder setCountry(java.lang.CharSequence value) {
+    public com.amazonaws.kafka.samples.Event.Builder setCountry(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.country = value;
       fieldSetFlags()[5] = true;
@@ -411,7 +411,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Clears the value of the 'country' field */
-    public samples.clickstream.avro.Event.Builder clearCountry() {
+    public com.amazonaws.kafka.samples.Event.Builder clearCountry() {
       country = null;
       fieldSetFlags()[5] = false;
       return this;
@@ -423,7 +423,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Sets the value of the 'description' field */
-    public samples.clickstream.avro.Event.Builder setDescription(java.lang.CharSequence value) {
+    public com.amazonaws.kafka.samples.Event.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[6], value);
       this.description = value;
       fieldSetFlags()[6] = true;
@@ -436,7 +436,7 @@ public class Event extends org.apache.avro.specific.SpecificRecordBase implement
     }
     
     /** Clears the value of the 'description' field */
-    public samples.clickstream.avro.Event.Builder clearDescription() {
+    public com.amazonaws.kafka.samples.Event.Builder clearDescription() {
       description = null;
       fieldSetFlags()[6] = false;
       return this;
