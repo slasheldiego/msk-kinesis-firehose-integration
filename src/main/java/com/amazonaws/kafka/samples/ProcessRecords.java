@@ -44,6 +44,7 @@ class ProcessRecords {
         gsrConfigs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         gsrConfigs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, AWSKafkaAvroDeserializer.class.getName());
         //gsrConfigs.put(AWSSchemaRegistryConstants.AWS_REGION, System.getenv("AWS_REGION"));
+        gsrConfigs.put(AWSSchemaRegistryConstants.AWS_REGION, "us-east-1");
         gsrConfigs.put(AWSSchemaRegistryConstants.AVRO_RECORD_TYPE, AvroRecordType.SPECIFIC_RECORD.getName());
         logger.error("=====> getGSRConfigs 1 ");
         if (System.getenv("SECONDARY_DESERIALIZER") != null) {
