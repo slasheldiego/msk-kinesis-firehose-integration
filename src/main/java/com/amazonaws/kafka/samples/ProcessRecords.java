@@ -80,7 +80,7 @@ class ProcessRecords {
                 logger.error("=====> AQUI ENTRA 2 " + System.getenv("CSR"));
 
                 //if (Boolean.parseBoolean(System.getenv("CSR"))) {
-                if(false){
+                if(true){
                     logger.error("=====> AQUI ENTRA 3 " + System.getenv("CSR"));
                     csr = true;
                     try {
