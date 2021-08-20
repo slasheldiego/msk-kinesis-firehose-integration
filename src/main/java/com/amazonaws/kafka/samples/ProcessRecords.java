@@ -66,7 +66,7 @@ class ProcessRecords {
     private void deserializeAddToFirehoseBatch(Deserializer deserializer, KafkaEvent kafkaEvent, String requestId, SendKinesisDataFirehose sendKinesisDataFirehose) {
         kafkaEvent.getRecords().forEach((key, value) -> value.forEach(v -> {
 
-            ClickEvent clickEvent = null;
+            com.amazonaws.kafka.samples.ClickEvent clickEvent = null;
             //Event event = null;
             boolean csr = false;
 
@@ -78,16 +78,16 @@ class ProcessRecords {
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                        clickEvent = (ClickEvent) SpecificData.get().deepCopy(ClickEvent.SCHEMA$, rec);
+                        clickEvent = (com.amazonaws.kafka.samples.ClickEvent) SpecificData.get().deepCopy(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$, rec);
                         //event = (Event) SpecificData.get().deepCopy(Event.SCHEMA$, rec);
                     } catch (Exception e) {
-                        logger.error(Util.stackTrace(e));
+                        logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
                     }
                 }
             }
 
             if (!csr) {
-                clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
                 logger.error("=====> AQUI ENTRA" + v.getTopic() + " " + v.getValue());
                 //event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v));
             }
@@ -102,7 +102,7 @@ class ProcessRecords {
 
     void processRecords(KafkaEvent kafkaEvent, String requestId) {
         logger.info("Processing batch with {} records for Request ID {} \n", getKafkaEventRecordsSize(kafkaEvent), requestId);
-        SendKinesisDataFirehose sendKinesisDataFirehose = new SendKinesisDataFirehose();
+        com.amazonaws.kafka.samples.SendKinesisDataFirehose sendKinesisDataFirehose = new SendKinesisDataFirehose();
         Deserializer deserializer = null;
         if (System.getenv("CSR") != null) {
             if (Boolean.parseBoolean(System.getenv("CSR"))) {
@@ -115,7 +115,7 @@ class ProcessRecords {
         }
 
         deserializeAddToFirehoseBatch(deserializer, kafkaEvent, requestId, sendKinesisDataFirehose);
-        SendKinesisDataFirehose.sendFirehoseBatch(sendKinesisDataFirehose.getFirehoseBatch(), 0, requestId, SendKinesisDataFirehose.batchNumber.incrementAndGet());
-        SendKinesisDataFirehose.batchNumber.set(0);
+        com.amazonaws.kafka.samples.SendKinesisDataFirehose.sendFirehoseBatch(sendKinesisDataFirehose.getFirehoseBatch(), 0, requestId, com.amazonaws.kafka.samples.SendKinesisDataFirehose.batchNumber.incrementAndGet());
+        com.amazonaws.kafka.samples.SendKinesisDataFirehose.batchNumber.set(0);
     }
 }
