@@ -43,14 +43,17 @@ class ProcessRecords {
         Map<String, Object> gsrConfigs = new HashMap<>();
         gsrConfigs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         gsrConfigs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, AWSKafkaAvroDeserializer.class.getName());
-        gsrConfigs.put(AWSSchemaRegistryConstants.AWS_REGION, System.getenv("AWS_REGION"));
+        //gsrConfigs.put(AWSSchemaRegistryConstants.AWS_REGION, System.getenv("AWS_REGION"));
         gsrConfigs.put(AWSSchemaRegistryConstants.AVRO_RECORD_TYPE, AvroRecordType.SPECIFIC_RECORD.getName());
+        logger.error("=====> getGSRConfigs 1 ");
         if (System.getenv("SECONDARY_DESERIALIZER") != null) {
+            logger.error("=====> getGSRConfigs 2 ");
             if (Boolean.parseBoolean(System.getenv("SECONDARY_DESERIALIZER"))) {
                 gsrConfigs.put(AWSSchemaRegistryConstants.SECONDARY_DESERIALIZER, KafkaAvroDeserializer.class.getName());
                 gsrConfigs.put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG, System.getenv("SCHEMA_REGISTRY_URL"));
                 gsrConfigs.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, "true");
             }
+            logger.error("=====> getGSRConfigs 3 ");
         }
         return gsrConfigs;
     }
