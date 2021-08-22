@@ -43,8 +43,8 @@ class ProcessRecords {
         Map<String, Object> gsrConfigs = new HashMap<>();
         gsrConfigs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         gsrConfigs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, AWSKafkaAvroDeserializer.class.getName());
-        //gsrConfigs.put(AWSSchemaRegistryConstants.AWS_REGION, System.getenv("AWS_REGION"));
-        gsrConfigs.put(AWSSchemaRegistryConstants.AWS_REGION, "us-east-1");
+        gsrConfigs.put(AWSSchemaRegistryConstants.AWS_REGION, System.getenv("AWS_REGION"));
+        //gsrConfigs.put(AWSSchemaRegistryConstants.AWS_REGION, "us-east-1");
         gsrConfigs.put(AWSSchemaRegistryConstants.AVRO_RECORD_TYPE, AvroRecordType.SPECIFIC_RECORD.getName());
         logger.error("=====> getGSRConfigs 1 ");
         if (System.getenv("SECONDARY_DESERIALIZER") != null) {
@@ -79,8 +79,7 @@ class ProcessRecords {
             if (System.getenv("CSR") != null) {
                 logger.error("=====> AQUI ENTRA 2 " + System.getenv("CSR"));
 
-                //if (Boolean.parseBoolean(System.getenv("CSR"))) {
-                if(true){
+                if (Boolean.parseBoolean(System.getenv("CSR"))) {
                     logger.error("=====> AQUI ENTRA 3 " + System.getenv("CSR"));
                     csr = true;
                     try {
