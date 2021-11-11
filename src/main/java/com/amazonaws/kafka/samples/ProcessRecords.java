@@ -4,6 +4,9 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 import com.amazonaws.services.lambda.runtime.events.KafkaEvent;
 import com.amazonaws.services.schemaregistry.deserializers.avro.AWSKafkaAvroDeserializer;
@@ -26,6 +29,19 @@ import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import samples.clickstream.avro.ClickEvent;
 
 class ProcessRecords {
+
+
+    static final private String[] deviceType = {"mobile","computer", "tablet"};
+    static final private String[] productCatalogOptions = {"home_page", "product_detail"};
+    static final private String[] productTypeOptions = {"cell phones", "laptops", "ear phones", "soundbars", "cd players", "AirPods", "video games", "cameras"};
+    static final private String[] productDetailOptions = {"product_catalog", "add_to_cart"};
+    static final private String[] addToCartOptions = {"product_catalog", "remove_from_cart", "order"};
+    static final private String[] orderOptions = {"order_checkout", "remove_from_cart", "product_catalog"};
+    static final private String[] removeFromCartOptions = {"", "product_detail", "product_catalog"};
+    private Long previousGlobalSeqNo = 0L;
+    static AtomicLong counter = new AtomicLong(0);
+    private Random rand = new Random();
+    private static AtomicInteger userIDMax = new AtomicInteger(1000);
 
     private static final Logger logger = LogManager.getLogger(ProcessRecords.class);
 
@@ -103,9 +119,29 @@ class ProcessRecords {
                     logger.error("=====> AQUI ENTRA 7 " + v.getTopic() + " " + v.getValue());
                     logger.error("=====> Clase NULA " + clickEvent);
                     logger.error("=====> Clase NULA " + new ClickEvent());
-                    clickEvent = (samples.clickstream.avro.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                    //clickEvent = (samples.clickstream.avro.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                    String userDeviceType = deviceType[rand.nextInt(deviceType.length)];
+                    String userIP = "66.249.1." + rand.nextInt(255);
+                    String eventType = productCatalogOptions[rand.nextInt(productCatalogOptions.length)];
+                    String productType = productTypeOptions[rand.nextInt(productTypeOptions.length)];
+                    Integer userCount = 0;
+                    Integer currUserIDLimit;
+                    Integer userIDLimit;
+                    Integer userID = rand.nextInt(1000) ;
+                    
+                    
+                    clickEvent = ClickEvent.newBuilder()
+                    .setIp(userIP)
+                    .setProductType(productType)
+                    .setUserid(userID)
+                    .setEventtimestamp(System.currentTimeMillis())
+                    .setDevicetype(userDeviceType)
+                    .setEventType(eventType)
+                    .setGlobalseq(counter.incrementAndGet())
+                    .setPrevglobalseq(previousGlobalSeqNo)
+                    .build();
                 } catch (Exception e) {
-                    logger.error("=====> ERROR " + e);
+                    logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
                 }
                 //event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v));
                 //samples.clickstream.avro.ClickEvent 
