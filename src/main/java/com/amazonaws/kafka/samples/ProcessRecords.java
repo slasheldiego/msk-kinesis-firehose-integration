@@ -23,6 +23,8 @@ import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 
+import samples.clickstream.avro.ClickEvent;
+
 class ProcessRecords {
 
     private static final Logger logger = LogManager.getLogger(ProcessRecords.class);
@@ -70,7 +72,7 @@ class ProcessRecords {
     private void deserializeAddToFirehoseBatch(Deserializer deserializer, KafkaEvent kafkaEvent, String requestId, SendKinesisDataFirehose sendKinesisDataFirehose) {
         kafkaEvent.getRecords().forEach((key, value) -> value.forEach(v -> {
 
-            com.amazonaws.kafka.samples.ClickEvent clickEvent = null;
+            samples.clickstream.avro.ClickEvent clickEvent = null;
             //Event event = null;
             boolean csr = false;
 
@@ -84,7 +86,7 @@ class ProcessRecords {
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                        clickEvent = (com.amazonaws.kafka.samples.ClickEvent) SpecificData.get().deepCopy(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$, rec);
+                        clickEvent = (samples.clickstream.avro.ClickEvent) SpecificData.get().deepCopy(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$, rec);
                         //event = (Event) SpecificData.get().deepCopy(Event.SCHEMA$, rec);
                     } catch (Exception e) {
                         logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
@@ -98,12 +100,13 @@ class ProcessRecords {
                 try{
                     logger.error("=====> AQUI ENTRA 6 " + v.getTopic() + " " + v.getValue());
                     logger.error("=====> Clase NULA " + clickEvent);
-                    logger.error("=====> Clase NULA " + new com.amazonaws.kafka.samples.ClickEvent());
-                    clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                    logger.error("=====> Clase NULA " + new samples.clickstream.avro.ClickEvent());
+                    clickEvent = (samples.clickstream.avro.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
                 } catch (Exception e) {
                     logger.error("=====> ERROR " + e);
                 }
                 //event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                //samples.clickstream.avro.ClickEvent 
             }
 
             if (clickEvent != null)
