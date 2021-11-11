@@ -98,6 +98,7 @@ class ProcessRecords {
             logger.error("=====> AQUI ENTRA 5 " + System.getenv("CSR"));
             if (!csr) {
                 try{
+                    logger.error("=====> Clase NULA " + clickEvent);
                     logger.error("=====> AQUI ENTRA 6 " + v.getTopic() + " " + v.getValue());
                     logger.error("=====> Clase NULA " + clickEvent);
                     logger.error("=====> Clase NULA " + new samples.clickstream.avro.ClickEvent());
