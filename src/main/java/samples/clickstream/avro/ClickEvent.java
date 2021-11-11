@@ -3,11 +3,11 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package com.amazonaws.kafka.samples;  
+package samples.clickstream.avro;  
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ClickEvent\",\"namespace\":\"com.amazonaws.kafka.samples\",\"fields\":[{\"name\":\"ip\",\"type\":\"string\"},{\"name\":\"eventtimestamp\",\"type\":\"long\"},{\"name\":\"devicetype\",\"type\":\"string\"},{\"name\":\"event_type\",\"type\":[\"string\",\"null\"]},{\"name\":\"product_type\",\"type\":[\"string\",\"null\"]},{\"name\":\"userid\",\"type\":\"int\"},{\"name\":\"globalseq\",\"type\":\"long\"},{\"name\":\"prevglobalseq\",\"type\":\"long\",\"default\":0}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ClickEvent\",\"namespace\":\"samples.clickstream.avro\",\"fields\":[{\"name\":\"ip\",\"type\":\"string\"},{\"name\":\"eventtimestamp\",\"type\":\"long\"},{\"name\":\"devicetype\",\"type\":\"string\"},{\"name\":\"event_type\",\"type\":[\"string\",\"null\"]},{\"name\":\"product_type\",\"type\":[\"string\",\"null\"]},{\"name\":\"userid\",\"type\":\"int\"},{\"name\":\"globalseq\",\"type\":\"long\"},{\"name\":\"prevglobalseq\",\"type\":\"long\",\"default\":0}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public java.lang.CharSequence ip;
   @Deprecated public long eventtimestamp;
@@ -191,18 +191,18 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   /** Creates a new ClickEvent RecordBuilder */
-  public static com.amazonaws.kafka.samples.ClickEvent.Builder newBuilder() {
-    return new com.amazonaws.kafka.samples.ClickEvent.Builder();
+  public static samples.clickstream.avro.ClickEvent.Builder newBuilder() {
+    return new samples.clickstream.avro.ClickEvent.Builder();
   }
   
   /** Creates a new ClickEvent RecordBuilder by copying an existing Builder */
-  public static com.amazonaws.kafka.samples.ClickEvent.Builder newBuilder(com.amazonaws.kafka.samples.ClickEvent.Builder other) {
-    return new com.amazonaws.kafka.samples.ClickEvent.Builder(other);
+  public static samples.clickstream.avro.ClickEvent.Builder newBuilder(samples.clickstream.avro.ClickEvent.Builder other) {
+    return new samples.clickstream.avro.ClickEvent.Builder(other);
   }
   
   /** Creates a new ClickEvent RecordBuilder by copying an existing ClickEvent instance */
-  public static com.amazonaws.kafka.samples.ClickEvent.Builder newBuilder(com.amazonaws.kafka.samples.ClickEvent other) {
-    return new com.amazonaws.kafka.samples.ClickEvent.Builder(other);
+  public static samples.clickstream.avro.ClickEvent.Builder newBuilder(samples.clickstream.avro.ClickEvent other) {
+    return new samples.clickstream.avro.ClickEvent.Builder(other);
   }
   
   /**
@@ -222,11 +222,11 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
 
     /** Creates a new Builder */
     private Builder() {
-      super(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$);
+      super(samples.clickstream.avro.ClickEvent.SCHEMA$);
     }
     
     /** Creates a Builder by copying an existing Builder */
-    private Builder(com.amazonaws.kafka.samples.ClickEvent.Builder other) {
+    private Builder(samples.clickstream.avro.ClickEvent.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.ip)) {
         this.ip = data().deepCopy(fields()[0].schema(), other.ip);
@@ -263,8 +263,8 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Creates a Builder by copying an existing ClickEvent instance */
-    private Builder(com.amazonaws.kafka.samples.ClickEvent other) {
-            super(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$);
+    private Builder(samples.clickstream.avro.ClickEvent other) {
+            super(samples.clickstream.avro.ClickEvent.SCHEMA$);
       if (isValidValue(fields()[0], other.ip)) {
         this.ip = data().deepCopy(fields()[0].schema(), other.ip);
         fieldSetFlags()[0] = true;
@@ -305,7 +305,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'ip' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder setIp(java.lang.CharSequence value) {
+    public samples.clickstream.avro.ClickEvent.Builder setIp(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.ip = value;
       fieldSetFlags()[0] = true;
@@ -318,7 +318,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'ip' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder clearIp() {
+    public samples.clickstream.avro.ClickEvent.Builder clearIp() {
       ip = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -330,7 +330,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'eventtimestamp' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder setEventtimestamp(long value) {
+    public samples.clickstream.avro.ClickEvent.Builder setEventtimestamp(long value) {
       validate(fields()[1], value);
       this.eventtimestamp = value;
       fieldSetFlags()[1] = true;
@@ -343,7 +343,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'eventtimestamp' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder clearEventtimestamp() {
+    public samples.clickstream.avro.ClickEvent.Builder clearEventtimestamp() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -354,7 +354,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'devicetype' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder setDevicetype(java.lang.CharSequence value) {
+    public samples.clickstream.avro.ClickEvent.Builder setDevicetype(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.devicetype = value;
       fieldSetFlags()[2] = true;
@@ -367,7 +367,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'devicetype' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder clearDevicetype() {
+    public samples.clickstream.avro.ClickEvent.Builder clearDevicetype() {
       devicetype = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -379,7 +379,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'event_type' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder setEventType(java.lang.CharSequence value) {
+    public samples.clickstream.avro.ClickEvent.Builder setEventType(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.event_type = value;
       fieldSetFlags()[3] = true;
@@ -392,7 +392,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'event_type' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder clearEventType() {
+    public samples.clickstream.avro.ClickEvent.Builder clearEventType() {
       event_type = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -404,7 +404,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'product_type' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder setProductType(java.lang.CharSequence value) {
+    public samples.clickstream.avro.ClickEvent.Builder setProductType(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.product_type = value;
       fieldSetFlags()[4] = true;
@@ -417,7 +417,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'product_type' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder clearProductType() {
+    public samples.clickstream.avro.ClickEvent.Builder clearProductType() {
       product_type = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -429,7 +429,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'userid' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder setUserid(int value) {
+    public samples.clickstream.avro.ClickEvent.Builder setUserid(int value) {
       validate(fields()[5], value);
       this.userid = value;
       fieldSetFlags()[5] = true;
@@ -442,7 +442,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'userid' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder clearUserid() {
+    public samples.clickstream.avro.ClickEvent.Builder clearUserid() {
       fieldSetFlags()[5] = false;
       return this;
     }
@@ -453,7 +453,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'globalseq' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder setGlobalseq(long value) {
+    public samples.clickstream.avro.ClickEvent.Builder setGlobalseq(long value) {
       validate(fields()[6], value);
       this.globalseq = value;
       fieldSetFlags()[6] = true;
@@ -466,7 +466,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'globalseq' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder clearGlobalseq() {
+    public samples.clickstream.avro.ClickEvent.Builder clearGlobalseq() {
       fieldSetFlags()[6] = false;
       return this;
     }
@@ -477,7 +477,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'prevglobalseq' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder setPrevglobalseq(long value) {
+    public samples.clickstream.avro.ClickEvent.Builder setPrevglobalseq(long value) {
       validate(fields()[7], value);
       this.prevglobalseq = value;
       fieldSetFlags()[7] = true;
@@ -490,7 +490,7 @@ public class ClickEvent extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'prevglobalseq' field */
-    public com.amazonaws.kafka.samples.ClickEvent.Builder clearPrevglobalseq() {
+    public samples.clickstream.avro.ClickEvent.Builder clearPrevglobalseq() {
       fieldSetFlags()[7] = false;
       return this;
     }
