@@ -97,6 +97,8 @@ class ProcessRecords {
             if (!csr) {
                 try{
                     logger.error("=====> AQUI ENTRA 6 " + v.getTopic() + " " + v.getValue());
+                    logger.error("=====> Clase NULA " + clickEvent);
+                    logger.error("=====> Clase NULA " + new com.amazonaws.kafka.samples.ClickEvent());
                     clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
                 } catch (Exception e) {
                     logger.error("=====> ERROR " + e);
