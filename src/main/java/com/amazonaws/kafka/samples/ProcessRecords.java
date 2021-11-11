@@ -72,7 +72,7 @@ class ProcessRecords {
     private void deserializeAddToFirehoseBatch(Deserializer deserializer, KafkaEvent kafkaEvent, String requestId, SendKinesisDataFirehose sendKinesisDataFirehose) {
         kafkaEvent.getRecords().forEach((key, value) -> value.forEach(v -> {
 
-            ClickEvent clickEvent = null;
+            samples.clickstream.avro.ClickEvent clickEvent = null;
             //Event event = null;
             boolean csr = false;
 
@@ -86,7 +86,7 @@ class ProcessRecords {
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                        clickEvent = (ClickEvent) SpecificData.get().deepCopy(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$, rec);
+                        clickEvent = (samples.clickstream.avro.ClickEvent) SpecificData.get().deepCopy(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$, rec);
                         //event = (Event) SpecificData.get().deepCopy(Event.SCHEMA$, rec);
                     } catch (Exception e) {
                         logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
@@ -103,7 +103,7 @@ class ProcessRecords {
                     logger.error("=====> AQUI ENTRA 7 " + v.getTopic() + " " + v.getValue());
                     logger.error("=====> Clase NULA " + clickEvent);
                     logger.error("=====> Clase NULA " + new ClickEvent());
-                    clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                    clickEvent = (samples.clickstream.avro.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
                 } catch (Exception e) {
                     logger.error("=====> ERROR " + e);
                 }
