@@ -86,7 +86,7 @@ class ProcessRecords {
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                        clickEvent = (samples.clickstream.avro.ClickEvent) SpecificData.get().deepCopy(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$, rec);
+                        clickEvent = (samples.clickstream.avro.ClickEvent) SpecificData.get().deepCopy(samples.clickstream.avro.ClickEvent.SCHEMA$, rec);
                         //event = (Event) SpecificData.get().deepCopy(Event.SCHEMA$, rec);
                     } catch (Exception e) {
                         logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
