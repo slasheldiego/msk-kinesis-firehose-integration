@@ -26,12 +26,11 @@ import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 
-import samples.clickstream.avro.ClickEvent;
 
 class ProcessRecords {
 
 
-    static final private String[] deviceType = {"mobile","computer", "tablet"};
+    /*static final private String[] deviceType = {"mobile","computer", "tablet"};
     static final private String[] productCatalogOptions = {"home_page", "product_detail"};
     static final private String[] productTypeOptions = {"cell phones", "laptops", "ear phones", "soundbars", "cd players", "AirPods", "video games", "cameras"};
     static final private String[] productDetailOptions = {"product_catalog", "add_to_cart"};
@@ -41,7 +40,7 @@ class ProcessRecords {
     private Long previousGlobalSeqNo = 0L;
     static AtomicLong counter = new AtomicLong(0);
     private Random rand = new Random();
-    private static AtomicInteger userIDMax = new AtomicInteger(1000);
+    private static AtomicInteger userIDMax = new AtomicInteger(1000);*/
 
     private static final Logger logger = LogManager.getLogger(ProcessRecords.class);
 
@@ -88,7 +87,7 @@ class ProcessRecords {
     private void deserializeAddToFirehoseBatch(Deserializer deserializer, KafkaEvent kafkaEvent, String requestId, SendKinesisDataFirehose sendKinesisDataFirehose) {
         kafkaEvent.getRecords().forEach((key, value) -> value.forEach(v -> {
 
-            samples.clickstream.avro.ClickEvent clickEvent = null;
+            ClickEvent clickEvent = null;
             //Event event = null;
             boolean csr = false;
 
@@ -102,7 +101,7 @@ class ProcessRecords {
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                        clickEvent = (samples.clickstream.avro.ClickEvent) SpecificData.get().deepCopy(samples.clickstream.avro.ClickEvent.SCHEMA$, rec);
+                        clickEvent = (ClickEvent) SpecificData.get().deepCopy(samples.clickstream.avro.ClickEvent.SCHEMA$, rec);
                         //event = (Event) SpecificData.get().deepCopy(Event.SCHEMA$, rec);
                     } catch (Exception e) {
                         logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
@@ -119,8 +118,8 @@ class ProcessRecords {
                     logger.error("=====> AQUI ENTRA 7 " + v.getTopic() + " " + v.getValue());
                     logger.error("=====> Clase NULA " + clickEvent);
                     logger.error("=====> Clase NULA " + new ClickEvent());
-                    //clickEvent = (samples.clickstream.avro.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                    String userDeviceType = deviceType[rand.nextInt(deviceType.length)];
+                    clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                    /*String userDeviceType = deviceType[rand.nextInt(deviceType.length)];
                     String userIP = "66.249.1." + rand.nextInt(255);
                     String eventType = productCatalogOptions[rand.nextInt(productCatalogOptions.length)];
                     String productType = productTypeOptions[rand.nextInt(productTypeOptions.length)];
@@ -139,7 +138,7 @@ class ProcessRecords {
                     .setEventType(eventType)
                     .setGlobalseq(counter.incrementAndGet())
                     .setPrevglobalseq(previousGlobalSeqNo)
-                    .build();
+                    .build();*/
                 } catch (Exception e) {
                     logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
                 }
