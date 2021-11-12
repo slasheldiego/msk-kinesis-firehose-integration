@@ -30,7 +30,7 @@ import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 class ProcessRecords {
 
 
-    static final private String[] deviceType = {"mobile","computer", "tablet"};
+    /*static final private String[] deviceType = {"mobile","computer", "tablet"};
     static final private String[] productCatalogOptions = {"home_page", "product_detail"};
     static final private String[] productTypeOptions = {"cell phones", "laptops", "ear phones", "soundbars", "cd players", "AirPods", "video games", "cameras"};
     static final private String[] productDetailOptions = {"product_catalog", "add_to_cart"};
@@ -40,7 +40,7 @@ class ProcessRecords {
     private Long previousGlobalSeqNo = 0L;
     static AtomicLong counter = new AtomicLong(0);
     private Random rand = new Random();
-    private static AtomicInteger userIDMax = new AtomicInteger(1000);
+    private static AtomicInteger userIDMax = new AtomicInteger(1000);*/
 
     private static final Logger logger = LogManager.getLogger(ProcessRecords.class);
 
@@ -140,7 +140,7 @@ class ProcessRecords {
                     .setPrevglobalseq(previousGlobalSeqNo)
                     .build();*/
                 } catch (Exception e) {
-                    logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
+                    logger.error(Util.stackTrace(e));
                 }
                 //event = (Event) deserializer.deserialize(v.getTopic(), base64Decode(v));
                 //samples.clickstream.avro.ClickEvent 
