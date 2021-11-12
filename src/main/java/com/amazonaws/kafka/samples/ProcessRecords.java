@@ -118,18 +118,18 @@ class ProcessRecords {
                     logger.error("=====> AQUI ENTRA 7 " + v.getTopic() + " " + v.getValue());
                     logger.error("=====> Clase NULA " + clickEvent);
                     logger.error("=====> Clase NULA " + new ClickEvent());
-                    //clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                    String userDeviceType = deviceType[rand.nextInt(deviceType.length)];
+                    clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                    /*String userDeviceType = deviceType[rand.nextInt(deviceType.length)];
                     String userIP = "66.249.1." + rand.nextInt(255);
                     String eventType = productCatalogOptions[rand.nextInt(productCatalogOptions.length)];
                     String productType = productTypeOptions[rand.nextInt(productTypeOptions.length)];
                     Integer userCount = 0;
                     Integer currUserIDLimit;
                     Integer userIDLimit;
-                    Integer userID = rand.nextInt(1000) ;
+                    Integer userID = rand.nextInt(1000) ;*/
                     
                     
-                    clickEvent = ClickEvent.newBuilder()
+                    /*clickEvent = ClickEvent.newBuilder()
                     .setIp(userIP)
                     .setProductType(productType)
                     .setUserid(userID)
@@ -138,7 +138,7 @@ class ProcessRecords {
                     .setEventType(eventType)
                     .setGlobalseq(counter.incrementAndGet())
                     .setPrevglobalseq(previousGlobalSeqNo)
-                    .build();
+                    .build();*/
                 } catch (Exception e) {
                     logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
                 }
