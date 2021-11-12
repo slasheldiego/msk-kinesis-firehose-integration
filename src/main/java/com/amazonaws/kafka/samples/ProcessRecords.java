@@ -30,7 +30,7 @@ import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 class ProcessRecords {
 
 
-    /*static final private String[] deviceType = {"mobile","computer", "tablet"};
+    static final private String[] deviceType = {"mobile","computer", "tablet"};
     static final private String[] productCatalogOptions = {"home_page", "product_detail"};
     static final private String[] productTypeOptions = {"cell phones", "laptops", "ear phones", "soundbars", "cd players", "AirPods", "video games", "cameras"};
     static final private String[] productDetailOptions = {"product_catalog", "add_to_cart"};
@@ -40,7 +40,7 @@ class ProcessRecords {
     private Long previousGlobalSeqNo = 0L;
     static AtomicLong counter = new AtomicLong(0);
     private Random rand = new Random();
-    private static AtomicInteger userIDMax = new AtomicInteger(1000);*/
+    private static AtomicInteger userIDMax = new AtomicInteger(1000);
 
     private static final Logger logger = LogManager.getLogger(ProcessRecords.class);
 
@@ -118,8 +118,8 @@ class ProcessRecords {
                     logger.error("=====> AQUI ENTRA 7 " + v.getTopic() + " " + v.getValue());
                     logger.error("=====> Clase NULA " + clickEvent);
                     logger.error("=====> Clase NULA " + new ClickEvent());
-                    clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                    /*String userDeviceType = deviceType[rand.nextInt(deviceType.length)];
+                    //clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                    String userDeviceType = deviceType[rand.nextInt(deviceType.length)];
                     String userIP = "66.249.1." + rand.nextInt(255);
                     String eventType = productCatalogOptions[rand.nextInt(productCatalogOptions.length)];
                     String productType = productTypeOptions[rand.nextInt(productTypeOptions.length)];
@@ -138,7 +138,7 @@ class ProcessRecords {
                     .setEventType(eventType)
                     .setGlobalseq(counter.incrementAndGet())
                     .setPrevglobalseq(previousGlobalSeqNo)
-                    .build();*/
+                    .build();
                 } catch (Exception e) {
                     logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
                 }
