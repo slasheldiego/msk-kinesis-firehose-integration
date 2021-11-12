@@ -87,7 +87,7 @@ class ProcessRecords {
     private void deserializeAddToFirehoseBatch(Deserializer deserializer, KafkaEvent kafkaEvent, String requestId, SendKinesisDataFirehose sendKinesisDataFirehose) {
         kafkaEvent.getRecords().forEach((key, value) -> value.forEach(v -> {
 
-            ClickEvent clickEvent = null;
+            com.amazonaws.kafka.samples.ClickEvent clickEvent = null;
             //Event event = null;
             boolean csr = false;
 
@@ -101,7 +101,7 @@ class ProcessRecords {
                     csr = true;
                     try {
                         GenericRecord rec = (GenericRecord) deserializer.deserialize(v.getTopic(), base64Decode(v));
-                        clickEvent = (ClickEvent) SpecificData.get().deepCopy(samples.clickstream.avro.ClickEvent.SCHEMA$, rec);
+                        clickEvent = (com.amazonaws.kafka.samples.ClickEvent) SpecificData.get().deepCopy(com.amazonaws.kafka.samples.ClickEvent.SCHEMA$, rec);
                         //event = (Event) SpecificData.get().deepCopy(Event.SCHEMA$, rec);
                     } catch (Exception e) {
                         logger.error(com.amazonaws.kafka.samples.Util.stackTrace(e));
@@ -118,7 +118,7 @@ class ProcessRecords {
                     logger.error("=====> AQUI ENTRA 7 " + v.getTopic() + " " + v.getValue());
                     logger.error("=====> Clase NULA " + clickEvent);
                     logger.error("=====> Clase NULA " + new ClickEvent());
-                    clickEvent = (ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
+                    clickEvent = (com.amazonaws.kafka.samples.ClickEvent) deserializer.deserialize(v.getTopic(), base64Decode(v));
                     /*String userDeviceType = deviceType[rand.nextInt(deviceType.length)];
                     String userIP = "66.249.1." + rand.nextInt(255);
                     String eventType = productCatalogOptions[rand.nextInt(productCatalogOptions.length)];
@@ -156,7 +156,7 @@ class ProcessRecords {
 
     void processRecords(KafkaEvent kafkaEvent, String requestId) {
         logger.info("Processing batch with {} records for Request ID {} \n", getKafkaEventRecordsSize(kafkaEvent), requestId);
-        com.amazonaws.kafka.samples.SendKinesisDataFirehose sendKinesisDataFirehose = new SendKinesisDataFirehose();
+        SendKinesisDataFirehose sendKinesisDataFirehose = new SendKinesisDataFirehose();
         Deserializer deserializer = null;
         if (System.getenv("CSR") != null) {
             if (Boolean.parseBoolean(System.getenv("CSR"))) {
